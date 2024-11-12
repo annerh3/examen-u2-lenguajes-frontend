@@ -5,8 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+      "login-pattern": "url('https://i.postimg.cc/HxK4Pqcr/bg-login.jpg')",
+      
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+  //  require('@tailwindcss/typography'),
+  ],
 }
-
