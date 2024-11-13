@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import AccountItem from '../components/AccountItem';
-import CreateAccountForm from '../components/CreateAccountForm';
+import { CreateAccountForm } from '../components';
 
-export default function AccountsCatalog() {
+export const AccountsCatalog = () => {
   const [cuentas, setCuentas] = useState([
     {
       id: "db992460-6b1e-44f9-af80-08dd03sdfsdfsd",
@@ -121,7 +121,7 @@ export default function AccountsCatalog() {
   };
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto ">
       <main className="flex-1 p-8">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-gray-800">Catálogo de Cuentas</h1>

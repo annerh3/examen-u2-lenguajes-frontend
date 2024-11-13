@@ -3,7 +3,6 @@ import { createAccountInitValues, createAccountValidationSchema } from '../forms
 import { isObjectEmpty } from '../../../shared/utils';
 
 export const CreateAccountForm = ({ isOpen, onClose }) => {
-
   // Configuración de Formik con el esquema de validación y valores iniciales
   const formik = useFormik({
     initialValues: createAccountInitValues,
