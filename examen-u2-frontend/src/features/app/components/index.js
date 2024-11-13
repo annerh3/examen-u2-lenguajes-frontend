@@ -1,3 +1,3 @@
 export * from './SideBar';
 export * from './AccountItem';
-export * from './ModalForm';
+export * from './CreateAccountForm';

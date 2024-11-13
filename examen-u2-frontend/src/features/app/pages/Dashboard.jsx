@@ -12,7 +12,7 @@ export const Dashboard = () => {
   const saldoGeneral = 15000;
   return (
    
-    <main className="flex-1 p-8">
+    <main className="flex-1 p-8 w-full h-full">
     <h1 className="text-3xl font-bold text-gray-800 mb-6">Dashboard</h1>
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -45,7 +45,7 @@ export const Dashboard = () => {
     </div>
 
    
-    <div className="rounded-lg border bg-white text-card-foreground shadow-sm mb-6">
+    <div className="rounded-lg border bg-white text-card-foreground shadow-sm mb-6 ">
       <div className="flex flex-col space-y-1.5 p-6">
         <h3 className="text-2xl font-semibold leading-none tracking-tight">Últimas Partidas Registradas</h3>
         <p className="text-sm text-muted-foreground">Resumen de las transacciones más recientes</p>

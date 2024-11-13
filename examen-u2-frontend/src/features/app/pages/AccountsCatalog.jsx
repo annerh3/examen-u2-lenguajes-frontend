@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AccountItem from '../components/AccountItem';
-import ModalForm from '../components/ModalForm';
+import CreateAccountForm from '../components/CreateAccountForm';
 
 export default function AccountsCatalog() {
   const [cuentas, setCuentas] = useState([
@@ -102,10 +102,10 @@ export default function AccountsCatalog() {
       ]
     }
   ]);
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isFormOpen, setFormOpen] = useState(false);
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+  const openForm = () => setFormOpen(true);
+  const closeForm = () => setFormOpen(false);
 
   const [expandedRows, setExpandedRows] = useState({});
 
@@ -126,12 +126,12 @@ export default function AccountsCatalog() {
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-gray-800">Catálogo de Cuentas</h1>
           <button
-           onClick={openModal}
+           onClick={openForm}
             className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
           >
             Agregar Cuenta
           </button>
-          <ModalForm isOpen={isModalOpen} onClose={closeModal} />
+          <CreateAccountForm isOpen={isFormOpen} onClose={closeForm} />
         </div>
 
         <table className="w-full text-left bg-white rounded-xl shadow-md">

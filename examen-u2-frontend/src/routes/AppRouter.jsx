@@ -8,7 +8,7 @@ export const AppRouter = () => {
 
   return (
     <Routes>
-      {isAuthenticated ? (
+      {!isAuthenticated ? (
         // Si está autenticado, ir al JournalizerRouter
         <Route path="/*" element={<JournalizerRouter />} />
       ) : (

@@ -18,7 +18,7 @@ export const SideBar = () => {
           <h2 className="text-2xl font-bold text-gray-800">Jornalizer</h2>
           <span className="block text-gray-60">
             <Users className="inline-block mr-2" size={20} />
-            {user.name}
+            {user.name ?? 'USER - TESTING'}
           </span>
         </div>
         <nav className="mt-6 flex flex-col flex-grow">
@@ -51,7 +51,7 @@ export const SideBar = () => {
           {isAuthenticated
           ? (
             <button
-            closeOnClick={handleClick}
+            onClick={handleClick}
             className="block px-4 py-2 text-gray-600 hover:bg-red-600 hover:text-white mt-80"
           >
             <LogOut className="inline-block mr-2" size={25} />
