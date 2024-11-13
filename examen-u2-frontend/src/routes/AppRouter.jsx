@@ -1,15 +1,23 @@
-import { Navigate, Route, Routes } from "react-router-dom"
-//import { ARouter } from "../features/app/routes/ARouter"
-import { SecurityRouter } from "../features/security/routes"
+import { Navigate, Route, Routes } from "react-router-dom";
+import { SecurityRouter } from "../features/security/routes";
+import { JournalizerRouter } from "../features/app/routes";
+import { useAuthStore } from "../features/security/store/useAuthStore";
 
 export const AppRouter = () => {
-  console.log('AppRouter.jsx')
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
   return (
     <Routes>
-        <Route path="/security/*" element={<SecurityRouter />} />
-        <Route path="*" element={<Navigate to="/security" />} />
-        {/* <Route path="/*" element={<ARouter />} /> */}
-     
+      {isAuthenticated ? (
+        // Si está autenticado, ir al JournalizerRouter
+        <Route path="/*" element={<JournalizerRouter />} />
+      ) : (
+        // Si no está autenticado, redirigir al login
+        <Route path="/*" element={<Navigate to="/security/login"/>} />
+      )}
+
+      {/* Rutas de seguridad */}
+      <Route path="/security/*" element={<SecurityRouter />} />
     </Routes>
-  )
-}
+  );
+};

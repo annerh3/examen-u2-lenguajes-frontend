@@ -24,16 +24,19 @@ export const useAuthStore = create((set,get) => ({
                         tokenExpiration: data.tokenExpiration
                     },
                     token: data.token,
+                    refreshToken: data.refreshToken,
                     isAuthenticated: true,
                     message: message
                 }
             );
             localStorage.setItem('user', JSON.stringify(get().user ?? {}))
             localStorage.setItem('token', get().token);
-            return { error: false, message };
+            localStorage.setItem('refreshToken', get().refreshToken)
+
+            return { error: false, message }; // Envío estos datos para manejo de card de error
         }
-        set({message: message, error: true});
-        return { error: true, message };
+        set({message: message, error: true}); // Aqui lo mismo
+        return { error: true, message }; //Aja
     },
 
      // Método de logout para cerrar sesión

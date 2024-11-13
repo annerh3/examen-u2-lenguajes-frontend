@@ -33,8 +33,7 @@ export const LoginPage = () => {
   
   useEffect(() => {
     if (isAuthenticated) {
-      //navigate("/my-events");
-      alert("Bienvenido!")
+      navigate("/dashboard");  
     }
   }, [isAuthenticated]);
 
