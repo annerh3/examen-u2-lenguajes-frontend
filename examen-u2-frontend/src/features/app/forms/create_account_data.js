@@ -1,11 +1,13 @@
 import * as Yup from 'yup';
 
 export const createAccountInitValues = {
-    precode: null,
+      precode: null,
       code: null,
-      name: '',
-      email: '',
+      accountName: '',
+      behaviorType: '',
+      allowsMovement: false,
       isParentAccount: false,
+      parentId: null
 }
 
 export const createAccountValidationSchema = Yup.object().shape({
@@ -17,13 +19,17 @@ export const createAccountValidationSchema = Yup.object().shape({
               then: (schema) => schema.required('PreCódigo es obligatorio cuando no es una cuenta padre'),
               otherwise: (schema) => schema.nullable(),
             }),
+  allowsMovement: Yup.boolean(),
   code: Yup.number()
         .typeError('Código debe ser un número')
         .required('Código es obligatorio'),
-  name: Yup.string()
+  accountName: Yup.string()
     .required('Nombre es obligatorio')
     .min(2, 'El nombre debe tener al menos 2 caracteres'),
-  email: Yup.string()
-    .email('Correo electrónico no válido')
-    .required('Correo electrónico es obligatorio'),
+    behaviorType: Yup.string().required('Nombre es obligatorio'),
+    parentId: Yup.mixed().when('isParentAccount', {
+      is: true,
+      then: () => Yup.mixed().nullable(), // parentId será null si es cuenta padre
+      otherwise: () => Yup.string().required(), // parentId será obligatorio si no es cuenta padre
+    })
 });

@@ -129,7 +129,7 @@ export const AccountsCatalog = () => {
            onClick={openForm}
             className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
           >
-            Agregar Cuenta
+            Agregar Cuenta Padre
           </button>
           <CreateAccountForm isOpen={isFormOpen} onClose={closeForm} />
         </div>
@@ -149,11 +149,12 @@ export const AccountsCatalog = () => {
                 account={account}
                 expandedRows={expandedRows}
                 toggleExpand={toggleExpand}
-                handleData={handleData}
+                handleData={handleData}             
               />
             ))}
           </tbody>
         </table>
+
       </main>
     </div>
   );
