@@ -10,3 +10,14 @@ export const createAccount = async (form) => {
     return error?.response?.data;
   }
 }
+
+export const getChildAccounts = async () => {
+  try{
+    const {data} = await axios.get('/Accounts/childs');
+         
+    return data;
+  }catch(error){
+    console.error(error);
+    return error?.response?.data;
+  }
+}

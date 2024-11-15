@@ -69,7 +69,7 @@ export default function LogsPage() {
       <main className="flex-1 px-4">
         <div className="flex flex-wrap items-center mb-6">
           <h1 className="text-2xl font-bold text-gray-800 mb-4 w-full sm:w-auto">
-            Application Logs
+            Reportes de Logs
           </h1>
 
           <form

@@ -52,7 +52,7 @@ export const SideBar = () => {
                         className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800"
                     >
                         <Logs size={25} />
-                        <span className="hidden md:inline-block ml-2">Application Logs</span>
+                        <span className="hidden md:inline-block ml-2">Reportes de Logs</span>
                     </Link>
 
                     {isAuthenticated && (

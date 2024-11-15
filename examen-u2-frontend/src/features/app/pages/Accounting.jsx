@@ -1,6 +1,6 @@
 import { Filter, PlusCircle } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { CreateAccountForm } from '../components'
+import { CreateAccountForm, CreateJournalEntryForm } from '../components'
 
 // Tipo para una partida contable
 // type Partida = {
@@ -80,7 +80,9 @@ export const Accounting = () => {
           >
            <PlusCircle className="mr-2 h-4 w-4 " /> Crear Partida
           </button>
-          <CreateAccountForm isOpen={isFormOpen} onClose={closeForm} />
+
+          <CreateJournalEntryForm isOpen={isFormOpen} onClose={closeForm} />
+          
         </div>
 
         <div className="mb-6 bg-white shadow-md rounded-lg p-4">
