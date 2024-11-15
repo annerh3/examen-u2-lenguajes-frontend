@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { getLogsPagination } from "../../../shared/actions/logs/logs.actions";
+import { getLogsPagination } from "../../../shared/actions/app_logs/logs.actions";
 
 export const useLogs = () => {
 
