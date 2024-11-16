@@ -11,9 +11,9 @@ export const createJournalEntryAsync = async (form) => {
     }
 }
 
-export const getJournalEntriesPaginationAsync = async () => {
+export const getJournalEntriesPaginationAsync = async (form) => {
     try{
-        const {data} = await journalizeApi.post('/journal-entry/get', form);
+        const {data} = await journalizeApi.get('/journal-entry/get', form);
 
         return data;
     }catch(error){
