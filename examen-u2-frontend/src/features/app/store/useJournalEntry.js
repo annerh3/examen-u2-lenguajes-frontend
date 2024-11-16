@@ -1,6 +1,6 @@
 
 import { create } from "zustand";
-import { createJournalEntry } from "../../../shared/actions/journalEntry/journalEntry.actions";
+import { createJournalEntryAsync } from "../../../shared/actions/journalEntry/journalEntry.actions";
 
 export const useJournalEntryStore = create((set,get) => ({
     description: '',
@@ -8,7 +8,7 @@ export const useJournalEntryStore = create((set,get) => ({
     message: '',
 
     createJournalEntry: async (form) => {
-        const {status, data, message} = await createJournalEntry(form);
+        const {status, data, message} = await createJournalEntryAsync(form);
         if(status){
             set({
                 error: false,

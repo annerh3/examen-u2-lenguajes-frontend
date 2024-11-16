@@ -9,52 +9,23 @@ import { useEffect, useState } from "react";
 import { useAccounts } from "../hooks/useAccounts";
 
 export const CreateJournalEntryForm = ({ isOpen, onClose }) => {
-  const accounts = [
-    {
-      id: "fb20b827-2ec7-4196-ebd8-08dd053cf5ac",
-      preCode: "10101",
-      code: "01",
-      accountName: "Caja General",
-      behaviorType: "D",
-      allowsMovement: true,
-      isActive: true,
-      childAccounts: [],
-    },
-    {
-      id: "fa7a862f-783d-4230-ebd9-08dd053cf5ac",
-      preCode: "10101",
-      code: "02",
-      accountName: "Caja Chica #1",
-      behaviorType: "D",
-      allowsMovement: true,
-      isActive: true,
-      childAccounts: [],
-    },
-    {
-      id: "c86a0397-37c8-4eb5-ebda-08dd053cf5ac",
-      preCode: "10101",
-      code: "03",
-      accountName: "Caja Chica #2",
-      behaviorType: "D",
-      allowsMovement: true,
-      isActive: true,
-      childAccounts: [],
-    },
-  ];
+
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
-// const { accounts, loadChildAccounts, isLoading} = useAccounts();
+const { accounts, loadChildAccounts, isLoading} = useAccounts();
     
 
-// useEffect(() => {
-//     if (fetching) {
-//     loadChildAccounts();
-//     setFetching(false);
-//     }
-//   }, [fetching]);
+useEffect(() => {
+    if (fetching) {
+    loadChildAccounts();
+    setFetching(false);
+  }
+}, [fetching]);
 
-  mirage.register();
-  const createJournalEntry = useJournalEntryStore((state) => state.createJournalEntry);
+mirage.register();
+
+const createJournalEntry = useJournalEntryStore((state) => state.createJournalEntry);
+// console.log(createJournalEntry)
 
   const formik = useFormik({
     initialValues: JournalEntryInitValues,
@@ -70,11 +41,10 @@ export const CreateJournalEntryForm = ({ isOpen, onClose }) => {
         const { error, message } = await createJournalEntry(formattedData);
         setLoading(false)
 
-        console.log("Data a enviar:", formattedData);
-        formik.resetForm();
         formik.setErrors({}); 
+        formik.resetForm();
 
-        onClose();
+        
         if (error) {
             toast.error(`${message}`, {
               position: "top-center",
@@ -98,7 +68,6 @@ export const CreateJournalEntryForm = ({ isOpen, onClose }) => {
               onClose: onClose,
             })
           }
-
     },
   });
 
@@ -115,6 +84,11 @@ export const CreateJournalEntryForm = ({ isOpen, onClose }) => {
       (_, i) => i !== index
     );
     formik.setFieldValue("accountsEntrys", newEntrys);
+  };
+
+  const handleCancel = () => {
+    formik.resetForm();
+    onClose(); 
   };
 
   if (!isOpen) return null;
@@ -212,11 +186,15 @@ export const CreateJournalEntryForm = ({ isOpen, onClose }) => {
                         )}
                       >
                         <option value="">Seleccione Cuenta</option>
-                        {accounts.map((account) => (
-                          <option key={account.id} value={account.id}>
-                            {account.accountName}
-                          </option>
-                        ))}
+                        {
+                        !isLoading ? (
+                          accounts.data.map((account) => (
+                            <option key={account.id} value={account.id}>
+                              {account.accountName}
+                              
+                            </option>
+                        ))):("")                  
+                        }
                       </select>
 
                       <input
@@ -273,7 +251,7 @@ export const CreateJournalEntryForm = ({ isOpen, onClose }) => {
             <div className="flex justify-end space-x-4 mt-4">
               <button
                 type="button"
-                onClick={onClose}
+                onClick={handleCancel}
                 className="px-4 py-2 bg-gray-400 text-white rounded"
               >
                 Cancelar

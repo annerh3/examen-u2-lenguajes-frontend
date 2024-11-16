@@ -119,7 +119,8 @@ export default function LogsPage() {
                 />
               ))
             ) : (
-              <p>{logs?.message}</p>
+              // <p>{logs?.message}</p>
+              <NotFound message ={logs?.message} />
             )
           ) : (
             <NotFound message ={"No hay conexión al servidor"} />

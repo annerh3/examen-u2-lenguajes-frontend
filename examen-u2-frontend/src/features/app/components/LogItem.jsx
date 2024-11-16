@@ -15,7 +15,7 @@ export const LogItem = ({ log, expandedLogs, toggleLogExpansion }) => {
           <div className="flex justify-between items-center">
             <div>
               <span   
-                className={`inline-block px-2 py-1 rounded-full text-xs font-semibold mr-2 ${logData.styles}`}
+                className={`inline-block font-bold px-2 py-1 rounded-full text-xs mr-2 ${logData.styles}`}
               >
                 {`${log.status} ${logData.name}` }
               </span>
